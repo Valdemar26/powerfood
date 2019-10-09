@@ -19,22 +19,22 @@ export class Balance2000Component implements OnInit {
   daysControl = new FormControl('', [Validators.required]);
 
   days = [
-    {number: '2 дн', price: '700'}
-    // {number: '4 дн', price: '1380'},
-    // {number: '6 дн', price: '2040'},
-    // {number: '14 дн', price: '3960'},
-    // {number: '24 дн', price: '7680'}
+    {number: '2 дн', price: '700'},
+    {number: '4 дн', price: '1380'},
+    {number: '6 дн', price: '2040'},
+    {number: '14 дн', price: '3960'},
+    {number: '24 дн', price: '7680'}
   ];
 
   onSelected(data) {
   }
 
   orderProduct() {
-    let myArray =  [
+    const myArray =  [
       { id: 2000,
-        name:"Баланс - 2000 ккал",
+        name: 'Баланс - 2000 ккал',
         price: this.selectedValue,
-        imageUrl: "../../../assets/img/balance-2000.jpg"}
+        imageUrl: '../../../assets/img/balance-2000.jpg'}
     ];
     localStorage.setItem('product', JSON.stringify(myArray));
   }
