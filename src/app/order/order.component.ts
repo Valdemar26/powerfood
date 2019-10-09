@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { IProduct } from '../products/product';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { IRestaurant } from "../restaurant/restaurant";
-import {ToastService} from "../service/toastr.service";
+import { IRestaurant } from '../restaurant/restaurant';
+import { ToastService } from '../service/toastr.service';
 
 export interface Time {
   value: string;
@@ -42,7 +42,8 @@ export class OrderComponent implements OnInit {
   ngOnInit() {
     this.myform = new FormGroup({
       'name': new FormControl('', [Validators.required,  Validators.minLength(3)]),
-      'mobile': new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
+      'mobile': new FormControl('',
+        [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
       // 'address': new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(25),
       //   Validators.pattern('[^\w\d]*(([0-9]+.*[A-Za-z\u0400-\u04ff]+.*)|[A-Za-z\u0400-\u04ff]+.*([0-9]+.*))')]),
       'address': new FormControl('', [Validators.required, Validators.minLength(3),
@@ -62,36 +63,36 @@ export class OrderComponent implements OnInit {
   }
 
   validateHuman(honeypot) {
-    if (honeypot) {  //if hidden form filled up
-      console.log("Robot Detected!");
+    if (honeypot) {  // if hidden form filled up
+      console.log('Robot Detected!');
       return true;
     } else {
-      console.log("Welcome Human!");
+      console.log('Welcome Human!');
     }
   }
 
   onSubmit(form) {
-    if (this.validateHuman(this.myform.get('honeypot').touched)) {  //if form is filled, form will not be submitted
+    if (this.validateHuman(this.myform.get('honeypot').touched)) {  // if form is filled, form will not be submitted
       return false;
     }
     this.toastService.showToast(
       'success',
       `Замовлення відправлено!`,
       3000);
-    console.log("Form Submitted!");
+    console.log('Form Submitted!');
 
     // PRODUCT
     if (localStorage.getItem('product')) {
-      let order_prod = JSON.parse(localStorage.getItem('product'))[0];
-      let array_new = {};
+      const order_prod = JSON.parse(localStorage.getItem('product'))[0];
+      const array_new = {};
       // let datepicker = form.value.datepicker.substring(0,10);
       array_new['phone'] = form.value.mobile;
-      array_new['address_customer']= form.value.address;
-      array_new['house']= form.value.house;
-      array_new['room']= form.value.room;
-      array_new['delivery']= form.value.delivery;
-      array_new['datepicker']= form.value.datepicker;
-      array_new['payment']= form.value.payment;
+      array_new['address_customer'] = form.value.address;
+      array_new['house'] = form.value.house;
+      array_new['room'] = form.value.room;
+      array_new['delivery'] = form.value.delivery;
+      array_new['datepicker'] = form.value.datepicker;
+      array_new['payment'] = form.value.payment;
       array_new['name_customer'] = form.value.name;
       array_new['price'] = order_prod.price;
       array_new['name_product'] = order_prod.name;
@@ -111,24 +112,24 @@ export class OrderComponent implements OnInit {
       localStorage.clear();
       // setTimeout(this.router.navigate(['/home']), 5000);
       // setTimeout(this.router.navigate(['/thx-page']), 5000);
-      this.router.navigate(['/thx-page'])
+      this.router.navigate(['/thx-page']);
     }
 
   }
 
   redirectToThxPage(): any {
     // setTimeout(this.router.navigate(['/thx-page']), 5000);
-    this.router.navigate(['/thx-page'])
+    this.router.navigate(['/thx-page']);
   }
 
   onlyNumberKey(event) {
-    return (event.charCode == 8 || event.charCode == 0)
+    return (event.charCode === 8 || event.charCode === 0)
         ? null : event.charCode >= 48 && event.charCode <= 57;
   }
 
   orderFromLocalStorage() {
-    let prod = JSON.parse(localStorage.getItem('product'));
-    let restaur = JSON.parse(localStorage.getItem('restaurant'));
+    const prod = JSON.parse(localStorage.getItem('product'));
+    const restaur = JSON.parse(localStorage.getItem('restaurant'));
     this.product = prod;
     this.restaurant = restaur;
   }
