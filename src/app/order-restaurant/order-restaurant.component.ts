@@ -113,7 +113,8 @@ export class OrderRestaurantComponent implements OnInit {
       this.toastService.showToast('success', 'Замовлення прийнято!');
 
       // this.router.navigate(['/home']);
-      setTimeout(this.router.navigate(['/']), 5000);
+      // setTimeout(this.router.navigate(['/']), 5000);
+      this.router.navigate(['/']);
     }
   }
 
