@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { IRestaurant } from "../restaurant/restaurant";
-import { ToastService } from "../service/toastr.service";
-import { Time } from "../order/order.component";
+import { IRestaurant } from '../restaurant/restaurant';
+import { ToastService } from '../service/toastr.service';
+import { Time } from '../order/order.component';
 
 @Component({
   selector: 'pf-order',
@@ -39,7 +39,8 @@ export class OrderRestaurantComponent implements OnInit {
   ngOnInit() {
     this.myRestaurantForm = new FormGroup({
       'name': new FormControl('', [Validators.required,  Validators.minLength(3)]),
-      'mobile': new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
+      'mobile': new FormControl('',
+        [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
       'address': new FormControl(''),
       'house': new FormControl(''),
       'room': new FormControl(''),
@@ -52,33 +53,33 @@ export class OrderRestaurantComponent implements OnInit {
   }
 
   validateHuman(honeypot) {
-    if (honeypot) {  //if hidden form filled up
-      console.log("Robot Detected!");
+    if (honeypot) {  // if hidden form filled up
+      console.log('Robot Detected!');
       return true;
     } else {
-      console.log("Welcome Human!");
+      console.log('Welcome Human!');
     }
   }
 
   onSubmit(form) {
-    if (this.validateHuman(this.myRestaurantForm.get('honeypot').touched)) {  //if form is filled, form will not be submitted
+    if (this.validateHuman(this.myRestaurantForm.get('honeypot').touched)) {  // if form is filled, form will not be submitted
       return false;
     }
 
     // RESTAURANT
     if (localStorage.getItem('restaurant')) {
-      let restItem = localStorage.getItem('restaurant').length;
+      const restItem = localStorage.getItem('restaurant').length;
     }
 
     if (localStorage.getItem('restaurant')) {
-        let order_rest = JSON.parse(localStorage.getItem('restaurant'));
+        const order_rest = JSON.parse(localStorage.getItem('restaurant'));
         let summ = 0;
-        let product = [];
+        const product = [];
         order_rest.forEach(function (element) {
             summ += element.price;
             product.push({name: element.name, piece: element.pieces, price: element.price});
         });
-        let array_new = {};
+        const array_new = {};
         array_new['phone'] = form.value.mobile;
         array_new['address_customer'] = form.value.address;
         array_new['house'] = form.value.house;
@@ -92,8 +93,8 @@ export class OrderRestaurantComponent implements OnInit {
             .set('Content-Type', 'application/json');
 
 
-        //todo: Змінити http.post на ajax-request, адреса: /send.php відправити data
-        // через вказання "'http://127.0.0.1:3000/" ця хрінь працювала при запущеному проекті на локалці
+        // todo: Змінити http.post на ajax-request, адреса: /send.php відправити data
+        // через вказання ''http://127.0.0.1:3000/' ця хрінь працювала при запущеному проекті на локалці
         // запит оброблявся не сервером, а локальним проектом
         // todo: Додавання action в ajax-data
         // data: {
@@ -123,12 +124,12 @@ export class OrderRestaurantComponent implements OnInit {
   // }
 
   onlyNumberKey(event) {
-    return (event.charCode == 8 || event.charCode == 0)
+    return (event.charCode === 8 || event.charCode === 0)
         ? null : event.charCode >= 48 && event.charCode <= 57;
   }
 
   orderFromLocalStorage() {
-    let restaur = JSON.parse(localStorage.getItem('restaurant'));
+    const restaur = JSON.parse(localStorage.getItem('restaurant'));
     this.restaurant = restaur;
     this.total = 0;
     this.pieces = 0;
@@ -150,8 +151,8 @@ export class OrderRestaurantComponent implements OnInit {
   }
 
   removeProduct(id) {
-    let items = JSON.parse(localStorage.getItem('restaurant'));
-    let index = items.map(x => {
+    const items = JSON.parse(localStorage.getItem('restaurant'));
+    const index = items.map(x => {
       return x.id;
     }).indexOf(id);
 
