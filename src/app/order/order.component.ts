@@ -110,13 +110,15 @@ export class OrderComponent implements OnInit {
       form.reset();
       localStorage.clear();
       // setTimeout(this.router.navigate(['/home']), 5000);
-      setTimeout(this.router.navigate(['/thx-page']), 5000);
+      // setTimeout(this.router.navigate(['/thx-page']), 5000);
+      this.router.navigate(['/thx-page'])
     }
 
   }
 
   redirectToThxPage(): any {
-    setTimeout(this.router.navigate(['/thx-page']), 5000);
+    // setTimeout(this.router.navigate(['/thx-page']), 5000);
+    this.router.navigate(['/thx-page'])
   }
 
   onlyNumberKey(event) {
@@ -135,9 +137,10 @@ export class OrderComponent implements OnInit {
     event.preventDefault();
     localStorage.clear();
     this.toastService.showToast('error', 'Корзину успішно очищено!');
-    setTimeout((x) => {
-      this.router.navigate(['/']);
-    }, 1500);
+    // setTimeout((x) => {
+    //   this.router.navigate(['/']);
+    // }, 1500);
+    this.router.navigate(['/']);
   }
 
 

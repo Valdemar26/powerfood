@@ -73,7 +73,8 @@ export class HeaderComponent implements OnInit {
 
     form.reset();
     alert('Менеджер зателефонує вам найближчим часом!');
-    setTimeout(this.router.navigate(['/']), 5000);
+    // setTimeout(this.router.navigate(['/']), 5000);
+    this.router.navigate(['/']);
   }
 
   onlyNumberKey(event) {
