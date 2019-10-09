@@ -82,5 +82,4 @@ export class HeaderComponent implements OnInit {
         ? null : event.charCode >= 48 && event.charCode <= 57;
   }
 
-
 }
