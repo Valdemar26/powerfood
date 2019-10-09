@@ -28,5 +28,23 @@
       "price": "503",
       "image": "https://cdn0.pokupon.ua/uploaded/new_campaign_pictures/452271/data/preview475x230/5.jpg?1518908201"
     }
+  ],
+  "products_days": [
+      {"number": "2 дн", "price": "700"},
+      {"number": "4 дн", "price": "1380"},
+      {"number": "6 дн", "price": "2040"},
+      {"number": "14 дн", "price": "3960"},
+      {"number": "24 дн", "price": "7680"}
+  ],
+  "products_balance": [
+    {
+      "id": 2000,
+      "name": "Баланс - 2000 ккал",
+      "short_description": "Програма для людей, які хочуть правильно харчуватись. У раціоні 5 прийомів їжі на день.",
+      "description": "Високий вміст білків з підтриманням оптимального рівня жирів і повільних вуглеводів допоможе позбутися від зайвих кілограмів без втрати м\"язової маси. Раціон - 1000 ккал.",
+      "price": 700,
+      "dayPrice": 350,
+      "imageUrl": "../../../assets/img/lover-1500.jpg"
+    }
   ]
 }
